@@ -1,5 +1,5 @@
 // Create a variable for the API endpoint. In this example, we're accessing Xano's API
-let xanoUrl = new URL('https://x8ki-letl-twmt.n7.xano.io/api:kH4I-Ysb/impact_stories');
+let xanoUrl = new URL('https://x8ki-letl-twmt.n7.xano.io/api:kH4I-Ysb');
 
 // Define a function (set of operations) to get restaurant information.
 // This will use the GET request on the URL endpoint
