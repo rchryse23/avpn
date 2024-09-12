@@ -56,9 +56,9 @@ function getStories() {
                 const h3 = card.getElementsByTagName('H3')[0]
                 h3.textContent = story.Story_Title;
 
-                // For each restaurant, create an paragraph and set the text content to the restaurant's description
+                /* For each restaurant, create an paragraph and set the text content to the restaurant's description
                 const p = card.getElementsByTagName('P')[0]
-                p.textContent = story.Story_Description;
+                p.textContent = story.Story_Description;*/
 
                 // Place the card into the div "Cards-Container" 
 
