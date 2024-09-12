@@ -41,7 +41,7 @@ function getStories() {
                 const card = style.cloneNode(true)
 
                 card.setAttribute('id', '');
-                card.style.display = 'block';
+               // card.style.display = 'block';
 
                 /* When a restuarant card is clicked, navigate to the item page by passing the restaurant id
                 card.addEventListener('click', function() {
