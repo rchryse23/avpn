@@ -1,4 +1,4 @@
-// Create a variable for the API endpoint. In this example, we're accessing Xano's API
+// Create a variable for the API endpoint
 let xanoUrl = new URL('https://x8ki-letl-twmt.n7.xano.io/api:kH4I-Ysb/impact_stories');
 
 // Define a function to get impact stories information
@@ -30,21 +30,22 @@ function getStories() {
                 // Clone the template card
                 const card = templateCard.cloneNode(true);
 
-                // Remove the id attribute to avoid duplicate IDs
+                // Remove the id attribute and combo class to avoid duplicates and unwanted styles
                 card.removeAttribute('id');
+                card.className = card.className.replace(' combo-class', '');
 
-                // Set the image source for both IMG elements to the current story image URL
-                const images = card.getElementsByTagName('IMG');
-                for (let img of images) {
-                    img.src = storyItem.Story_Image_URL;
-                    img.srcset = storyItem.Story_Image_URL;
+                // Get all IMG elements within the cloned card and set their src and srcset attributes
+                const imgs = card.getElementsByTagName('IMG');
+                for (let i = 0; i < imgs.length; i++) {
+                    imgs[i].src = storyItem.Story_Image_URL;
+                    imgs[i].srcset = storyItem.Story_Image_URL;
                 }
 
                 // Set the text content of the h3 element to the story title
                 const h3 = card.getElementsByTagName('H3')[0];
                 h3.textContent = storyItem.Story_Title;
 
-                // Set the text content of the paragraph element to the story description
+                // Set the text content of the first P element to the story description
                 const p = card.getElementsByTagName('P')[0];
                 p.textContent = storyItem.Story_Description;
 
