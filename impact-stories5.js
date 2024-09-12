@@ -50,11 +50,11 @@ function getStories() {
 
                 // For each restaurant, Create an image and use the restaurant image coming from the API
                 const img = card.getElementsByTagName('IMG')[0]
-                img.src = story.Story_Image_URL; // using Xano's template engine to re-size the pictures down and make them a box
+                img.src = storyItem.Story_Image_URL; // using Xano's template engine to re-size the pictures down and make them a box
 
                 // For each restaurant, create an h3 and set the text content to the restaurant's title
                 const h3 = card.getElementsByTagName('H3')[0]
-                h3.textContent = story.Story_Title;
+                h3.textContent = storyItem.Story_Title;
 
                 /* For each restaurant, create an paragraph and set the text content to the restaurant's description
                 const p = card.getElementsByTagName('P')[0]
