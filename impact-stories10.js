@@ -42,6 +42,9 @@ function getStories() {
                 const h3 = card.getElementsByTagName('H3')[0];
                 h3.textContent = storyItem.Story_Title;
 
+                const p = card.getElementsByTagName('P')[0];
+                p.textContent = storyItem.Story_Description;
+
                 // Append the cloned card to the container
                 cardContainer.appendChild(card);
             });
