@@ -1,5 +1,5 @@
 // Create a variable for the API endpoint. In this example, we're accessing Xano's API
-let xanoUrl = new URL('https://x8ki-letl-twmt.n7.xano.io/api:kH4I-Ysb');
+let xanoUrl = new URL('https://x8ki-letl-twmt.n7.xano.io/api:kH4I-Ysb/impact_stories');
 
 // Define a function (set of operations) to get restaurant information.
 // This will use the GET request on the URL endpoint
@@ -12,7 +12,7 @@ function getStories() {
     // Define a function (set of operations) to get restaurant information.
     // Creates a variable that will take the URL from above and makes sure it displays as a string. 
     // We then add the word 'restaurant" so the API endpoint becomes https://x715-fe9c-6426.n7.xano.io/api:Iw1iInWB/restaurant
-    let url = xanoUrl.toString() + 'impact_stories';
+    let url = xanoUrl.toString();
 
 
     // Remember the 'request' was defined above as the standard way to access an API in Javascript.
