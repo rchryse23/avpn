@@ -12,7 +12,7 @@ function getStories() {
     // Define a function (set of operations) to get restaurant information.
     // Creates a variable that will take the URL from above and makes sure it displays as a string. 
     // We then add the word 'restaurant" so the API endpoint becomes https://x715-fe9c-6426.n7.xano.io/api:Iw1iInWB/restaurant
-    let url = xanoUrl.toString();
+    let url = xanoUrl.toString() + 'impact-stories';
 
 
     // Remember the 'request' was defined above as the standard way to access an API in Javascript.
@@ -33,7 +33,7 @@ function getStories() {
 
             // This is called a For Loop. This goes through each object being passed back from the Xano API and does something.
             // Specifically, it says "For every element in Data (response from API), call each individual item restaurant"
-            data.forEach(story => {
+            data.forEach(storyItem => {
 
                 // For each restaurant, create a div called card and style with the "Sample Card" class
                 const style = document.getElementById('story')
@@ -43,22 +43,22 @@ function getStories() {
                 card.setAttribute('id', '');
                 card.style.display = 'block';
 
-                // When a restuarant card is clicked, navigate to the item page by passing the restaurant id
+                /* When a restuarant card is clicked, navigate to the item page by passing the restaurant id
                 card.addEventListener('click', function() {
                     document.location.href = "/item?id=" + story.id;
-                });
+                });*/
 
                 // For each restaurant, Create an image and use the restaurant image coming from the API
                 const img = card.getElementsByTagName('IMG')[0]
-                img.src = story.banner.url; // using Xano's template engine to re-size the pictures down and make them a box
+                img.src = story.Story_Image_URL; // using Xano's template engine to re-size the pictures down and make them a box
 
                 // For each restaurant, create an h3 and set the text content to the restaurant's title
                 const h3 = card.getElementsByTagName('H3')[0]
-                h3.textContent = story.name;
+                h3.textContent = story.Story_Title;
 
                 // For each restaurant, create an paragraph and set the text content to the restaurant's description
                 const p = card.getElementsByTagName('P')[0]
-                p.textContent = `${story.description}`
+                p.textContent = `${story.Story_Description}`
 
                 // Place the card into the div "Cards-Container" 
 
