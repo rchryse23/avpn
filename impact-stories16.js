@@ -1,6 +1,3 @@
-// Create a variable for the API endpoint
-let xanoUrl = new URL('https://x8ki-letl-twmt.n7.xano.io/api:kH4I-Ysb/impact_stories');
-
 // Define a function to get impact stories information
 function getStories() {
     // Create a request variable and assign a new XMLHttpRequest object to it
@@ -25,14 +22,19 @@ function getStories() {
             // Get the template card element that will be cloned
             const templateCard = document.getElementById('story');
 
+            // Get the base class from the template card
+            const baseClass = templateCard.classList[0];
+
             // Loop through each story item returned by the API
             data.forEach(storyItem => {
                 // Clone the template card
                 const card = templateCard.cloneNode(true);
 
-                // Remove the id attribute and combo class to avoid duplicates and unwanted styles
+                // Remove the id attribute
                 card.removeAttribute('id');
-                card.className = card.className.replace(' combo-class', '');
+
+                // Remove all classes and reassign only the base class
+                card.className = baseClass;
 
                 // Get all IMG elements within the cloned card and set their src and srcset attributes
                 const imgs = card.getElementsByTagName('IMG');
