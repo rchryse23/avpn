@@ -33,14 +33,20 @@ function getStories() {
                 // Remove the id attribute to avoid duplicate IDs
                 card.removeAttribute('id');
 
-                // Set the image source to the current story image URL
-                const img = card.getElementsByTagName('IMG')[0];
-                img.src = storyItem.Story_Image_URL;
-                img.srcset = storyItem.Story_Image_URL;
+                // Set the image source for both IMG elements to the current story image URL
+                const images = card.getElementsByTagName('IMG');
+                for (let img of images) {
+                    img.src = storyItem.Story_Image_URL;
+                    img.srcset = storyItem.Story_Image_URL;
+                }
 
                 // Set the text content of the h3 element to the story title
                 const h3 = card.getElementsByTagName('H3')[0];
                 h3.textContent = storyItem.Story_Title;
+
+                // Set the text content of the paragraph element to the story description
+                const p = card.getElementsByTagName('P')[0];
+                p.textContent = storyItem.Story_Description;
 
                 // Append the cloned card to the container
                 cardContainer.appendChild(card);
