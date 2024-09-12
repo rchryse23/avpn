@@ -26,7 +26,7 @@ function getStories() {
             const templateCard = document.getElementById('story');
 
             // Use the first story's image for all cloned cards
-            const firstStoryImageUrl = data[0]?.Story_Image_URL;
+            const firstStoryImageUrl = data.Story_Image_URL;
 
             // Loop through each story item returned by the API
             data.forEach(storyItem => {
