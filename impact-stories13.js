@@ -25,9 +25,6 @@ function getStories() {
             // Get the template card element that will be cloned
             const templateCard = document.getElementById('story');
 
-            // Use the first story's image for all cloned cards
-            const firstStoryImageUrl = data.Story_Image_URL;
-
             // Loop through each story item returned by the API
             data.forEach(storyItem => {
                 // Clone the template card
@@ -36,10 +33,10 @@ function getStories() {
                 // Remove the id attribute to avoid duplicate IDs
                 card.removeAttribute('id');
 
-                // Set the image source to the first story image URL for all cards
+                // Set the image source to the current story image URL
                 const img = card.getElementsByTagName('IMG')[0];
-                img.src = firstStoryImageUrl;
-                img.srcset = firstStoryImageUrl;
+                img.src = storyItem.Story_Image_URL;
+                img.srcset = storyItem.Story_Image_URL;
 
                 // Set the text content of the h3 element to the story title
                 const h3 = card.getElementsByTagName('H3')[0];
