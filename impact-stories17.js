@@ -1,3 +1,6 @@
+// Create a variable for the API endpoint
+let xanoUrl = new URL('https://x8ki-letl-twmt.n7.xano.io/api:kH4I-Ysb/impact_stories');
+
 // Define a function to get impact stories information
 function getStories() {
     // Create a request variable and assign a new XMLHttpRequest object to it
