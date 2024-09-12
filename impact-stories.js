@@ -12,7 +12,7 @@ function getStories() {
     // Define a function (set of operations) to get restaurant information.
     // Creates a variable that will take the URL from above and makes sure it displays as a string. 
     // We then add the word 'restaurant" so the API endpoint becomes https://x715-fe9c-6426.n7.xano.io/api:Iw1iInWB/restaurant
-    let url = xanoUrl.toString() + 'impact-stories';
+    let url = xanoUrl.toString() + 'impact_stories';
 
 
     // Remember the 'request' was defined above as the standard way to access an API in Javascript.
