@@ -27,7 +27,7 @@ function getStories() {
             const templateCard = document.getElementById('story');
 
             // Get the base class from the template card
-            const baseClass = templateCard.classList[0];
+            const baseClass = templateCard.classList[0]; // Assume the base class is the first one
 
             // Loop through each story item returned by the API
             data.forEach((storyItem, index) => {
