@@ -26,6 +26,9 @@ function getStories() {
             // Get the template card element that will be cloned
             const templateCard = document.getElementById('story');
 
+            // Get the base class from the template card
+            const baseClass = templateCard.classList[0];
+
             // Loop through each story item returned by the API
             data.forEach((storyItem, index) => {
                 // Clone the template card
@@ -33,6 +36,9 @@ function getStories() {
 
                 // Remove the id attribute since IDs must be unique
                 card.removeAttribute('id');
+
+                // Remove all classes and reassign only the base class
+                card.className = baseClass;
 
                 // Get all IMG elements within the cloned card and set their src and srcset attributes
                 const imgs = card.getElementsByTagName('IMG');
