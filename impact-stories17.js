@@ -20,24 +20,19 @@ function getStories() {
         // Check if the request was successful
         if (request.status >= 200 && request.status < 400) {
             // Get the container where the cards will be placed
-            const cardContainer = document.getElementById("impact-stories");
+            const cardContainer1 = document.getElementById("impact-stories");
+            const cardContainer2 = document.getElementById("impact-stories2");
 
             // Get the template card element that will be cloned
             const templateCard = document.getElementById('story');
 
-            // Get the base class from the template card
-            const baseClass = templateCard.classList[0];
-
             // Loop through each story item returned by the API
-            data.forEach(storyItem => {
+            data.forEach((storyItem, index) => {
                 // Clone the template card
                 const card = templateCard.cloneNode(true);
 
-                // Remove the id attribute
+                // Remove the id attribute since IDs must be unique
                 card.removeAttribute('id');
-
-                // Remove all classes and reassign only the base class
-                card.className = baseClass;
 
                 // Get all IMG elements within the cloned card and set their src and srcset attributes
                 const imgs = card.getElementsByTagName('IMG');
@@ -54,8 +49,12 @@ function getStories() {
                 const p = card.getElementsByTagName('P')[0];
                 p.textContent = storyItem.Story_Description;
 
-                // Append the cloned card to the container
-                cardContainer.appendChild(card);
+                // Append the cloned card to the appropriate container
+                if (index < 5) {
+                    cardContainer1.appendChild(card); // First 5 stories to impact-stories
+                } else if (index >= 5 && index < 9) {
+                    cardContainer2.appendChild(card); // Next 4 stories to impact-stories2
+                }
             });
 
             // Reinitialize Webflow interactions to ensure animations apply to the new elements
