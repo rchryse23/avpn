@@ -19,6 +19,9 @@ function getStories() {
 
         // Check if the request was successful
         if (request.status >= 200 && request.status < 400) {
+            // Sort stories by Sort_Order
+            data.sort((a, b) => a.Sort_Order - b.Sort_Order);
+
             // Get the container where the cards will be placed
             const cardContainer1 = document.getElementById("impact-stories");
             const cardContainer2 = document.getElementById("impact-stories2");
