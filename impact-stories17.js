@@ -56,9 +56,9 @@ function getStories() {
                 p.textContent = storyItem.Story_Description;
 
                 // Append the cloned card to the appropriate container
-                if (index <= 4) {
+                if (index < 4) {
                     cardContainer1.appendChild(card); // First 4 stories to impact-stories
-                } else if (index >= 5 && index =< 8) {
+                } else if (index > 4 && index <= 8) {
                     cardContainer2.appendChild(card); // Next 4 stories to impact-stories2
                 }
             });
