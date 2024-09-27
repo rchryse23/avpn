@@ -22,7 +22,7 @@ function getStories() {
             // Sort stories by Sort_Order
             data.sort((a, b) => a.Sort_Order - b.Sort_Order);
 
-            // Get the containers where the cards will be placed
+            // Get the container where the cards will be placed
             const cardContainer1 = document.getElementById("impact-stories");
             const cardContainer2 = document.getElementById("impact-stories2");
 
@@ -32,47 +32,39 @@ function getStories() {
             // Get the base class from the template card
             const baseClass = templateCard.classList[0]; // Assume the base class is the first one
 
-            // Define a function to append cloned cards to a container
-            function appendCards(container, start, end) {
-                for (let i = start; i < end; i++) {
-                    let storyItem = data[i % data.length]; // Cycle through data if needed
+            // Loop through each story item returned by the API
+            data.forEach((storyItem, index) => {
+                // Clone the template card
+                const card = templateCard.cloneNode(true);
 
-                    // Clone the template card
-                    const card = templateCard.cloneNode(true);
+                // Remove the id attribute since IDs must be unique
+                card.removeAttribute('id');
 
-                    // Remove the id attribute since IDs must be unique
-                    card.removeAttribute('id');
+                // Remove all classes and reassign only the base class
+                card.className = baseClass;
 
-                    // Remove all classes and reassign only the base class
-                    card.className = baseClass;
-
-                    // Set IMG elements' src and srcset attributes
-                    const imgs = card.getElementsByTagName('IMG');
-                    for (let i = 0; i < imgs.length; i++) {
-                        imgs[i].src = storyItem.Story_Image_URL;
-                        imgs[i].srcset = storyItem.Story_Image_URL;
-                    }
-
-                    // Set the text content of the h3 element to the story title
-                    const h3 = card.getElementsByTagName('H3')[0];
-                    h3.textContent = storyItem.Story_Title;
-
-                    // Set the text content of the first P element to the story description
-                    const p = card.getElementsByTagName('P')[0];
-                    p.textContent = storyItem.Story_Description;
-
-                    // Append the cloned card to the container
-                    container.appendChild(card);
+                // Get all IMG elements within the cloned card and set their src and srcset attributes
+                const imgs = card.getElementsByTagName('IMG');
+                for (let i = 0; i < imgs.length; i++) {
+                    imgs[i].src = storyItem.Story_Image_URL;
+                    imgs[i].srcset = storyItem.Story_Image_URL;
                 }
-            }
 
-            // Append the first set of stories
-            appendCards(cardContainer1, 0, 4);
-            appendCards(cardContainer2, 4, 8);
+                // Set the text content of the h3 element to the story title
+                const h3 = card.getElementsByTagName('H3')[0];
+                h3.textContent = storyItem.Story_Title;
 
-            // Duplicate content to create a seamless marquee effect
-            appendCards(cardContainer1, 0, 4); // Duplicate first set for seamless scrolling
-            appendCards(cardContainer2, 4, 8); // Duplicate second set for seamless scrolling
+                // Set the text content of the first P element to the story description
+                const p = card.getElementsByTagName('P')[0];
+                p.textContent = storyItem.Story_Description;
+
+                // Append the cloned card to the appropriate container
+                if (index < 4) {
+                    cardContainer1.appendChild(card); // First 4 stories to impact-stories
+                } else if (index >= 4 && index < 8) {
+                    cardContainer2.appendChild(card); // Next 4 stories to impact-stories2
+                }
+            });
 
             // Reinitialize Webflow interactions to ensure animations apply to the new elements
             Webflow.require('ix2').init(); 
@@ -87,3 +79,4 @@ function getStories() {
 (function() {
     getStories();
 })();
+
