@@ -1,5 +1,5 @@
 // Create a variable for the API endpoint
-let xanoUrl = new URL('https://x8ki-letl-twmt.n7.xano.io/api:kH4I-Ysb/impact_stories');
+let xanoUrl = new URL('https://rchryse23.github.io/avpn/avpn_impact-stories.json');
 
 // Define a function to get impact stories information
 function getStories() {
