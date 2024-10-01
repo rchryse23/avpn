@@ -98,11 +98,11 @@ function setupIntersectionObserver() {
             }
         });
     }, {
-        threshold: 0.1 // Trigger animation when 10% of the card is visible
+        threshold: 0.2 // Trigger animation when 10% of the card is visible
     });
 
     // Observe each card in both containers
-    document.querySelectorAll('#impact-stories .story, #impact-stories2 .story').forEach(card => {
+    document.querySelectorAll('#impact-stories .review_impact_story, #impact-stories2 .review_impact_story').forEach(card => {
         observer.observe(card);
     });
 }
