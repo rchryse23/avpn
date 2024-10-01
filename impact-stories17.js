@@ -101,7 +101,7 @@ function setupIntersectionObserver() {
             }
         });
     }, {
-        threshold: 0.1 // Trigger animation when 10% of the card is visible
+        threshold: 0.2 // Trigger animation when 20% of the card is visible
     });
 
     // Make sure the correct card elements are being observed
@@ -109,7 +109,7 @@ function setupIntersectionObserver() {
         observer.observe(card); // Observe each card for intersection
     });
 
-    console.log("Observer is set for cards"); // Log to ensure observer setup
+    //console.log("Observer is set for cards"); // Log to ensure observer setup
 }
 
 // Run the getStories function when the document is ready
