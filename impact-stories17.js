@@ -64,6 +64,15 @@ function getStories() {
                 } else if (index >= 4 && index < 8) {
                     cardContainer2.appendChild(card); // Next 4 stories to impact-stories2
                 }
+
+                // Apply fade-in effect to the appended card
+                anime({
+                    targets: card,
+                    opacity: [0, 1], // Fade-in effect
+                    easing: "easeOutExpo",
+                    duration: 1400,
+                    delay: index * 500 // Staggered delay based on the index
+                });
             });
 
             // Reinitialize Webflow interactions to ensure animations apply to the new elements
@@ -79,4 +88,3 @@ function getStories() {
 (function() {
     getStories();
 })();
-
