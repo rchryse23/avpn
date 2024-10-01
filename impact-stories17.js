@@ -94,7 +94,7 @@ function setupIntersectionObserver() {
                     opacity: [0, 1], // Fade-in effect
                     easing: "easeOutExpo",
                     duration: 1400,
-                    delay: entry * 200 // 200ms delay between each card's animation
+                    delay: entry * 1000 // 200ms delay between each card's animation
                 });
 
                 // Unobserve the card once it's been animated
