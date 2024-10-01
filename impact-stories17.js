@@ -81,38 +81,6 @@ function getStories() {
     request.send();
 }
 
-// Function to set up Intersection Observer for the cards
-function setupIntersectionObserver() {
-    // Create a new Intersection Observer instance
-    let observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            // If the card is in view
-            if (entry.isIntersecting) {
-                // Apply the fade-in animation to the card
-                anime({
-                    targets: entry.target,
-                    opacity: [0, 1], // Fade-in effect
-                    easing: "easeOutExpo",
-                    duration: 1400,
-                    delay: entry * 1000 // 200ms delay between each card's animation
-                });
-
-                // Unobserve the card once it's been animated
-                observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.2 // Trigger animation when 20% of the card is visible
-    });
-
-    // Make sure the correct card elements are being observed
-    document.querySelectorAll('#impact-stories > div, #impact-stories2 > div').forEach(card => {
-        observer.observe(card); // Observe each card for intersection
-    });
-
-    //console.log("Observer is set for cards"); // Log to ensure observer setup
-}
-
 // Run the getStories function when the document is ready
 document.addEventListener('DOMContentLoaded', function() {
     getStories();
