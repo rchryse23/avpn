@@ -43,6 +43,9 @@ function getStories() {
                 // Remove all classes and reassign only the base class
                 card.className = baseClass;
 
+                // Set the opacity to 0 initially to make the fade-in effect visible
+                card.style.opacity = '0';
+
                 // Get all IMG elements within the cloned card and set their src and srcset attributes
                 const imgs = card.getElementsByTagName('IMG');
                 for (let i = 0; i < imgs.length; i++) {
@@ -69,7 +72,7 @@ function getStories() {
             // Reinitialize Webflow interactions to ensure animations apply to the new elements
             Webflow.require('ix2').init();
 
-            // Set up Intersection Observer to animate cards when they come into view
+            // Ensure that all cards are appended before setting up the Intersection Observer
             setupIntersectionObserver();
         }
     };
@@ -98,16 +101,18 @@ function setupIntersectionObserver() {
             }
         });
     }, {
-        threshold: 0.2 // Trigger animation when 10% of the card is visible
+        threshold: 0.1 // Trigger animation when 10% of the card is visible
     });
 
-    // Observe each card in both containers
-    document.querySelectorAll('#impact-stories .review_impact_story, #impact-stories2 .review_impact_story').forEach(card => {
-        observer.observe(card);
+    // Make sure the correct card elements are being observed
+    document.querySelectorAll('#impact-stories .story, #impact-stories2 .story').forEach(card => {
+        observer.observe(card); // Observe each card for intersection
     });
+
+    console.log("Observer is set for cards"); // Log to ensure observer setup
 }
 
 // Run the getStories function when the document is ready
-(function() {
+document.addEventListener('DOMContentLoaded', function() {
     getStories();
-})();
+});
