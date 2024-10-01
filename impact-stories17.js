@@ -44,7 +44,7 @@ function getStories() {
                 card.className = baseClass;
 
                 // Set the opacity to 0 initially to make the fade-in effect visible
-                card.style.opacity = '0';
+                //card.style.opacity = '0';
 
                 // Get all IMG elements within the cloned card and set their src and srcset attributes
                 const imgs = card.getElementsByTagName('IMG');
