@@ -64,24 +64,47 @@ function getStories() {
                 } else if (index >= 4 && index < 8) {
                     cardContainer2.appendChild(card); // Next 4 stories to impact-stories2
                 }
-
-                // Apply fade-in effect to the appended card
-                anime({
-                    targets: card,
-                    opacity: [0, 1], // Fade-in effect
-                    easing: "easeOutExpo",
-                    duration: 1400,
-                    delay: index * 500 // Staggered delay based on the index
-                });
             });
 
             // Reinitialize Webflow interactions to ensure animations apply to the new elements
-            Webflow.require('ix2').init(); 
+            Webflow.require('ix2').init();
+
+            // Set up Intersection Observer to animate cards when they come into view
+            setupIntersectionObserver();
         }
     };
 
     // Send the request to the API
     request.send();
+}
+
+// Function to set up Intersection Observer for the cards
+function setupIntersectionObserver() {
+    // Create a new Intersection Observer instance
+    let observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            // If the card is in view
+            if (entry.isIntersecting) {
+                // Apply the fade-in animation to the card
+                anime({
+                    targets: entry.target,
+                    opacity: [0, 1], // Fade-in effect
+                    easing: "easeOutExpo",
+                    duration: 1400
+                });
+
+                // Unobserve the card once it's been animated
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1 // Trigger animation when 10% of the card is visible
+    });
+
+    // Observe each card in both containers
+    document.querySelectorAll('#impact-stories .story, #impact-stories2 .story').forEach(card => {
+        observer.observe(card);
+    });
 }
 
 // Run the getStories function when the document is ready
