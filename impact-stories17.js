@@ -105,7 +105,7 @@ function setupIntersectionObserver() {
     });
 
     // Make sure the correct card elements are being observed
-    document.querySelectorAll('#impact-stories .story, #impact-stories2 .story').forEach(card => {
+    document.querySelectorAll('#impact-stories > div, #impact-stories2 > div').forEach(card => {
         observer.observe(card); // Observe each card for intersection
     });
 
