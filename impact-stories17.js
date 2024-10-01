@@ -71,9 +71,6 @@ function getStories() {
 
             // Reinitialize Webflow interactions to ensure animations apply to the new elements
             Webflow.require('ix2').init();
-
-            // Ensure that all cards are appended before setting up the Intersection Observer
-            setupIntersectionObserver();
         }
     };
 
